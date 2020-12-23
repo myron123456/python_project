@@ -30,3 +30,41 @@ Python的解释器很多，但使用最广泛的还是CPython。如果要和Java
 本教程的所有代码只确保在CPython 3.x版本下运行。请务必在本地安装CPython（也就是从Python官方网站下载的安装程序）。
 【廖雪峰的官方网站 https://www.liaoxuefeng.com/wiki/1016959663602400/1016966024263840】
 
+二、注释：
+
+单行注释⾏： # 注释内容 ，快捷键ctrl+/
+
+多行注释⾏： """ 注释内容 """ 或 ''' 注释内容 '''
+
+三、变量
+１、标识符：
+变量名 = 值
+标识符命名规则是Python中定义各种名字的时候的统一规范，具体如下：
+由数字、字母、下划线组成
+不能以数字开头
+不能使用内置关键字
+严格区分大小写
+False None True and as assert break class 
+continue def del elif else except finally for
+from global if import in is lambda nonlocal
+not or pass raise return try while with 
+yield
+２、命名习惯：
+⻅见名知义。
+⼤大驼峰：即每个单词首字母都大写，例如： MyName 。
+⼩小驼峰：第二个（含）以后的单词⾸字⺟⼤写，例如： myName 。
+  下划线：例如： my_name 。
+ 四、格式化输出：
+ １、格式化符号：
+ %s：格式化输出字符串
+　%d：格式化输出整数
+　%f：格式化输出浮点数
+２、f-字符串
+f'{表达式}'
+# 我的名字是TOM，明年19岁了
+print(f'我的名字是{name}, 明年{age + 1}岁了')
+３：转义字符
+\n：换行
+\t：制表符
+４、print结束符
+print('内容', end="")
