@@ -277,7 +277,8 @@ while i<=5:
         j+=1
     i += 1
     print('')"""
-"""# example11 打印99乘法表
+"""
+# example11 打印99乘法表
 i = 1
 j = 1
 while i<=9:
