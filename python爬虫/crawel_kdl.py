@@ -37,9 +37,9 @@ def crawel_one_page(url):
     headers = {
         "User-Agent": "Mozilla/5.0(Macintosh; Intel Mac OS X 13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36",
     }
-    proxy = {"http": "52.149.152.236:80"}
+    # proxy = {"http": "http://52.149.152.236:80"}
     res = requests.get(url, headers=headers, verify=False,
-                       allow_redirects=False, timeout=15, proxies=proxy)
+                       allow_redirects=False, timeout=15)
     if res.status_code == 200:
         return res.text
     return None
@@ -60,24 +60,35 @@ def re_parse_one_page(html):
     # return result_list
     items = re.findall(content, html)
     for item in items:
+        item = list(item)
+        if item[2] == "HTTP":
+            item[2] = "http"
+        else:
+            item[2]="https"
         yield {
             # 'type': item[2],
             # 'target': str(item[0])+":"+str(item[1])
-            "{}".format(item[2]): "{}".format(str(item[0]) + ":" + str(item[1]))
+            "{}".format(item[2]): "{}".format(str(item[2])+"://"+str(item[0]) + ":" + str(item[1]))
         }
 
 
-def verify(item):
-    p = requests.get('http://icanhazip.com', proxies=item, timeout=30)
-    # print(p.text)
-    time.sleep(2.5)
-    tg = list(item.values())[0].split(':')[0]
-    if p.status_code == 200:
-        print(item)
-        write_to_mysql1(item)
-        if tg in p.text.strip():
-            print("gn ok")
-            write_to_mysql2(item)
+def verify(content):
+    try:
+        p = requests.get('http://icanhazip.com', proxies=content, timeout=15)
+        print(p.text)
+        time.sleep(2.5)
+        item = list(content.items())[0]
+        item = {'{}'.format(item[0]): '{}'.format(item[1])}
+        tg = list(item.values())[0].split(':')[1][2:].split('.')
+        tg = str(tg[0]) + "." + str(tg[1]) + "." + str(tg[2])
+        print(tg)
+        if p.status_code == 200:
+            write_to_mysql1(item)
+            if tg in p.text.strip():
+                print("gn ok")
+                write_to_mysql2(item)
+    except  Exception as e:
+        print(e)
 
 
 def write_to_txt(item):
@@ -86,12 +97,21 @@ def write_to_txt(item):
 
 
 def write_to_mysql1(target):
-    # 数据库名称和密码
-    name = 'root'
-    password = ''  # 替换为自己的用户名和密码
-    # 建立本地数据库连接(需要先开启数据库服务)
-    db = "mvs"
-    db = pymysql.connect('localhost', name, password, db, charset='utf8')
+    # # 数据库名称和密码
+    # user = 'root'
+    # passwd = 'myron123'  # 替换为自己的用户名和密码
+    # # 建立本地数据库连接(需要先开启数据库服务)
+    # host="localhost"
+    # port = 3306
+    # db = "crawel"
+    # db = pymysql.connect(user,passwd,host,port,db)
+    db = pymysql.connect(
+        host='localhost',
+        port=3306,
+        user='root',
+        password='myron123',
+        database='crawel'
+    )
     cursor = db.cursor()
     sql = 'insert into dl(target) values("{}")'.format(target)
     cursor.execute(sql)
@@ -100,12 +120,21 @@ def write_to_mysql1(target):
 
 
 def write_to_mysql2(target):
-    # 数据库名称和密码
-    name = 'root'
-    password = ''  # 替换为自己的用户名和密码
-    # 建立本地数据库连接(需要先开启数据库服务)
-    db = "mvs"
-    db = pymysql.connect('localhost', name, password, db, charset='utf8')
+    # # 数据库名称和密码
+    # name = 'root'
+    # password = 'myron123'  # 替换为自己的用户名和密码
+    # # 建立本地数据库连接(需要先开启数据库服务)
+    # host = "localhost"
+    # db = "crawel"
+    # port = 3306
+    # db = pymysql.connect(host,port,name,  password, db, charset='utf8')
+    db = pymysql.connect(
+        host='localhost',
+        port=3306,
+        user='root',
+        password='myron123',
+        database='crawel'
+    )
     cursor = db.cursor()
     sql = 'insert into ndl(target) values("{}")'.format(target)
     cursor.execute(sql)
@@ -114,17 +143,20 @@ def write_to_mysql2(target):
 
 
 def main():
-    for i in range(12, 13):
-        url = "https://www.kuaidaili.com/free/inha/{}/".format(str(i))
-        time.sleep(5.5)
-        html = crawel_one_page(url)
-        # f = re_parse_one_page(html)
-        # print(f)
-        for item in re_parse_one_page(html):
-            # target = verify(item)
-            # write_to_mysql(target)
-            print(item)
-            verify(item)
+        for i in range(1, 11):
+            try:
+                url = "https://www.kuaidaili.com/free/inha/{}/".format(str(i))
+                time.sleep(5.5)
+                html = crawel_one_page(url)
+                # f = re_parse_one_page(html)
+                # print(f)
+                for item in re_parse_one_page(html):
+                    # target = verify(item)
+                    # write_to_mysql(target)
+                    print(item)
+                    verify(item)
+            except Exception as e:
+                print(e)
 
 
 main()
