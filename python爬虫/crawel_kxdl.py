@@ -49,7 +49,7 @@ def verify(content):
         item = {'{}'.format(item[0]): '{}'.format(item[1])}
         print(item)
         tg = list(item.values())[0].split(':')[1][2:].split('.')
-        tg = str(tg[1]) + "." + str(tg[2]) + "." + str(tg[3])
+        tg = str(tg[0]) + "." + str(tg[1]) + "." + str(tg[2])
         if p.status_code == 200:
             # print(item)
             write_to_mysql1(item)

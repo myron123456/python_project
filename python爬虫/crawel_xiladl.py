@@ -98,7 +98,7 @@ def write_to_mysql2(target):
 
 def main():
     # xila free proxy IP,页面1的url特殊
-    for i in range(1, 11):
+    for i in range(1, 21):
         try:
             if i==1:
                 url = "http://www.xiladaili.com/gaoni/"
