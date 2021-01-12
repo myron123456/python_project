@@ -43,7 +43,7 @@ def verify(content):
         }
         p = requests.get('http://icanhazip.com', headers=headers, proxies=content, timeout=10)
         print(p.text)
-        time.sleep(2.3)
+        time.sleep(0.3)
         # print(content)
         item = list(content.items())[0]
         item = {'{}'.format(item[0]): '{}'.format(item[1])}
