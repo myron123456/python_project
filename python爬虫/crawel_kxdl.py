@@ -14,7 +14,7 @@ def crawel_one_page(url):
     }
     # proxy = {"http": "http://52.149.152.236:80"}
     res = requests.get(url, headers=headers, verify=False,
-                       allow_redirects=False, timeout=15)
+                       allow_redirects=False, timeout=2)
     if res.status_code == 200:
         return res.text
     return None

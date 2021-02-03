@@ -74,7 +74,7 @@ def re_parse_one_page(html):
 
 def verify(content):
     try:
-        p = requests.get('http://icanhazip.com', proxies=content, timeout=15)
+        p = requests.get('http://icanhazip.com', proxies=content, timeout=10)
         print(p.text)
         time.sleep(2.5)
         item = list(content.items())[0]

@@ -42,9 +42,9 @@ def verify(content):
         headers = {
             "User-Agent": "Mozilla/5.0(Macintosh; Intel Mac OS X 13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36",
         }
-        p = requests.get('http://icanhazip.com', headers=headers, proxies=content, timeout=10)
+        p = requests.get('http://icanhazip.com', headers=headers, proxies=content, timeout=3)
         print(p.text)
-        time.sleep(2.3)
+        # time.sleep(2.3)
         # print(content)
         item = list(content.items())[0]
         item = {'{}'.format(item[0]): '{}'.format(item[1])}
