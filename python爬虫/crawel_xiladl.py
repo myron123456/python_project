@@ -27,7 +27,7 @@ class myThread(threading.Thread):
 def crawel_one_page(url):
     headers = {
         "User-Agent": 'Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1',
-        'Connection': 'close'
+
     }
     # proxy = {"HTTP": "52.149.152.236:80"}
     res = requests.get(url, headers=headers, verify=False,
@@ -56,12 +56,17 @@ def parse_one_page(html):
 def verify(content):
     try:
         headers = {
-            "User-Agent": "Mozilla/5.0(Macintosh; Intel Mac OS X 13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36",
+            "User-Agent": "Mozilla/5.0(Macintosh; Intel Mac OS X 13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36"
+            ,
         }
         url1 = 'http://icanhazip.com'
         url2 = "http://httpbin.org/get"
         url3 = "https://httpbin.org/get"
-        p = requests.get(url=url2, headers=headers, proxies=content, verify=False, allow_redirects=False, timeout=3)
+        if "https" in str(content):
+            url = url3
+        else:
+            url = url2
+        p = requests.get(url=url, headers=headers, proxies=content, verify=False, allow_redirects=False, timeout=5)
         # print(p.text)
         result = json.loads(p.text)['origin']
         # time.sleep(0.3)

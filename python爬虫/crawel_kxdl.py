@@ -3,10 +3,25 @@ import re
 import time
 import pymysql
 import requests
+import threading
 
 requests.packages.urllib3.disable_warnings()
 
 
+class myThread(threading.Thread):
+    def __init__(self, threadID, name, counter):
+        threading.Thread.__init__(self)
+        self.threadID = threadID
+        self.name = name
+        self.counter = counter
+
+    def run(self):
+        print("开启线程： " + self.name)
+        # 获取锁，用于线程同步
+        threadLock.acquire()
+        main()
+        # 释放锁，开启下一个线程
+        threadLock.release()
 def crawel_one_page(url):
     headers = {
         "User-Agent": 'Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1',
@@ -14,7 +29,7 @@ def crawel_one_page(url):
     }
     # proxy = {"http": "http://52.149.152.236:80"}
     res = requests.get(url, headers=headers, verify=False,
-                       allow_redirects=False, timeout=2)
+                       allow_redirects=False, timeout=3)
     if res.status_code == 200:
         return res.text
     return None
@@ -41,9 +56,15 @@ def verify(content):
         headers = {
             "User-Agent": 'Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1',
         }
-        p = requests.get('http://icanhazip.com', headers=headers, proxies=content, timeout=10)
-        print(p.text)
-        time.sleep(2.3)
+        url2 = "http://httpbin.org/get"
+        url3 = "https://httpbin.org/get"
+        if "https" in str(content):
+            url = url3
+        else:
+            url = url2
+        p = requests.get(url=url, headers=headers, proxies=content, timeout=5)
+        # print(p.text)
+        # time.sleep(2.3)
         # print(content)
         item = list(content.items())[0]
         item = {'{}'.format(item[0]): '{}'.format(item[1])}
@@ -101,7 +122,7 @@ def main():
         for i in range(1, 11):
             try:
                 url = "http://www.kxdaili.com/dailiip/{}/{}.html".format(str(j),str(i))
-                time.sleep(3.6)
+                # time.sleep(3.6)
                 html = crawel_one_page(url)
                 if html is not None:
                     for content in parse_one_page(html):
@@ -114,4 +135,40 @@ def main():
                 print(e)
 
 
-main()
+threadLock = threading.Lock()
+threads = []
+
+# 创建新线程
+thread1 = myThread(1, "Thread-1", 1)
+thread2 = myThread(2, "Thread-2", 2)
+thread3 = myThread(3, "Thread-3", 3)
+thread4 = myThread(4, "Thread-4", 4)
+thread5 = myThread(5, "Thread-5", 5)
+thread6 = myThread(6, "Thread-6", 6)
+thread7 = myThread(7, "Thread-7", 7)
+thread8 = myThread(8, "Thread-8", 8)
+# 开启新线程
+thread1.start()
+thread2.start()
+thread3.start()
+thread4.start()
+thread5.start()
+thread6.start()
+thread7.start()
+thread8.start()
+
+# 添加线程到线程列表
+threads.append(thread1)
+threads.append(thread2)
+threads.append(thread3)
+threads.append(thread4)
+threads.append(thread5)
+threads.append(thread6)
+threads.append(thread7)
+threads.append(thread8)
+# 等待所有线程完成
+for t in threads:
+    t.join()
+print("退出主线程")
+
+# main()
