@@ -14,7 +14,7 @@ def read_proxys():
         database="crawel",
     )
     cursor = db.cursor()
-    sql = "select distinct target from xila_ndl;"
+    sql = "select distinct target from proxy;"
     cursor.execute(sql)
     proxys = cursor.fetchall()
     db.commit()
@@ -31,9 +31,22 @@ def proxy_list():
 
 
 def write_to_txt(item):
-    with open('xila_ndl1.txt', 'a', encoding='utf-8') as f:
+    with open('xila_ndl.txt', 'a', encoding='utf-8') as f:
         f.write(json.dumps(item, ensure_ascii=False) + '\n')
         # f.write(str(item)+    '\n')
+def write_to_mysql(target):
+    db = pymysql.connect(
+        host='localhost',
+        port=3306,
+        user='root',
+        password='myron123',
+        database='crawel'
+    )
+    cursor = db.cursor()
+    sql = 'insert into ndl(target) values("{}")'.format(target)
+    cursor.execute(sql)
+    print('插入成功')
+    db.commit()
 
 def proxy_list_plus():
     proxys = read_proxys()
@@ -55,13 +68,16 @@ def proxy_list_plus():
             print("================== 第" + str(i) + "次尝试==========")
             p = requests.get(url=url, headers=headers, proxies=proxy, verify=False, allow_redirects=False, timeout=15)
             # print(p.text)
+            item = list(proxy.items())[0]
+            item = {'{}'.format(item[0]): '{}'.format(item[1])}
             result = json.loads(p.text)['origin']
             if p.status_code == 200:
                 tg = list(proxy.values())[0].split(':')[1][2:].split('.')
                 tg = str(tg[0]) + "." + str(tg[1]) + "." + str(tg[2])
                 if tg in result.strip():
-                    proxy_list.append(proxy)
-                    write_to_txt(proxy)
+                    proxy_list.append(item)
+                    write_to_txt(item)
+                    write_to_mysql(item)
 
             print(proxy_list)
         except Exception as e:
