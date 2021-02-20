@@ -54,7 +54,7 @@ def proxy_list_plus():
                 url = url2
             p = requests.get(url=url, headers=headers, proxies=proxy, verify=False, allow_redirects=False, timeout=15)
             # print(p.text)
-            print("================== 第" + i + "次尝试==========")
+            print("================== 第" + str(i) + "次尝试==========")
             result = json.loads(p.text)['origin']
             if p.status_code == 200:
                 tg = list(proxy.values())[0].split(':')[1][2:].split('.')
