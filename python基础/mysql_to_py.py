@@ -31,7 +31,7 @@ def proxy_list():
 
 
 def write_to_txt(item):
-    with open('xila_ndl.txt', 'a', encoding='utf-8') as f:
+    with open('xila_ndl1.txt', 'a', encoding='utf-8') as f:
         f.write(json.dumps(item, ensure_ascii=False) + '\n')
         # f.write(str(item)+    '\n')
 
@@ -54,6 +54,7 @@ def proxy_list_plus():
                 url = url2
             p = requests.get(url=url, headers=headers, proxies=proxy, verify=False, allow_redirects=False, timeout=15)
             # print(p.text)
+            print("================== 第" + i + "次尝试==========")
             result = json.loads(p.text)['origin']
             if p.status_code == 200:
                 tg = list(proxy.values())[0].split(':')[1][2:].split('.')
