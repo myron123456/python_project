@@ -101,7 +101,7 @@ def verify(content):
             url = url3
         else:
             url = url2
-        p = requests.get(url, headers=headers, proxies=content, verify=False, allow_redirects=False, timeout=5)
+        p = requests.get(url, headers=headers, proxies=content, verify=False, allow_redirects=False, timeout=15)
         # print(p.text)
         # time.sleep(2.5)
         result = json.loads(p.text)['origin']
@@ -109,7 +109,8 @@ def verify(content):
         item = {'{}'.format(item[0]): '{}'.format(item[1])}
         print(item)
         tg = list(item.values())[0].split(':')[1][2:].split('.')
-        tg = str(tg[0]) + "." + str(tg[1]) + "." + str(tg[2])
+        # tg = str(tg[0]) + "." + str(tg[1]) + "." + str(tg[2])
+        tg = str(tg[0]) + "." + str(tg[1])
         if p.status_code == 200:
             # print(item)
             write_to_mysql1(item)
