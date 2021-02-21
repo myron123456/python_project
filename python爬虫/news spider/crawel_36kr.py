@@ -84,8 +84,8 @@ def main():
         parse_data2 =  parse_news2(news_data)
         post_data=parse_data2[1]
         result_list.append(parse_data2[0])
-        for news in result_list:
-            write_to_txt(news)
+    for news in result_list:
+        write_to_txt(news)
         # print(parse_data2)
 
     print(result_list)
