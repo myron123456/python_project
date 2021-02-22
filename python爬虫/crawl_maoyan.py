@@ -5,11 +5,13 @@ import json
 import pymysql
 import os
 import json
-
+from fake_useragent import UserAgent
+user_agent = UserAgent()
+ua = user_agent.random
 
 def go_one_page(url):
     headers = {
-        "User-Agent": "Mozilla/5.0(Macintosh; Intel Mac OS X 13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36",
+        "User-Agent": ua,
     }
     proxy_list = {
         "http": "175.42.129.42:9999",
@@ -52,9 +54,12 @@ def go_one_page(url):
         "http": "182.46.207.97:9999",
         "http": "45.4.85.75:9991",
         "http": "182.46.123.225:9999",
+
     }
+    # proxy = {'http': 'http://171.35.149.45:9999'}
+    # proxy = {'https': 'https://49.89.67.177:9999'}
     res = requests.get(url=url, headers=headers,
-                       timeout=15, proxies=proxy_list)
+                       timeout=15)
     if res.status_code == 200:
         result = res.text
         # content = "<p class=\"name\"><a .*?>(.*?)<\/a><\/p>"
@@ -95,7 +100,7 @@ def write_to_file(content):
 def write_to_mysql(item):
     # 数据库名称和密码
     name = 'root'
-    password = ' '  # 替换为自己的用户名和密码
+    password = 'myron123'  # 替换为自己的用户名和密码
     # 建立本地数据库连接(需要先开启数据库服务)
     db = "mvs"
     db = pymysql.connect('localhost', name, password, db, charset='utf8')

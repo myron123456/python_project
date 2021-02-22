@@ -29,7 +29,7 @@ def crawel_one_page(url):
     }
     # proxy = {"http": "http://52.149.152.236:80"}
     res = requests.get(url, headers=headers, verify=False,
-                       allow_redirects=False, timeout=3)
+                       allow_redirects=False, timeout=5)
     if res.status_code == 200:
         return res.text
     return None
@@ -70,7 +70,8 @@ def verify(content):
         item = {'{}'.format(item[0]): '{}'.format(item[1])}
         print(item)
         tg = list(item.values())[0].split(':')[1][2:].split('.')
-        tg = str(tg[0]) + "." + str(tg[1]) + "." + str(tg[2])
+        # tg = str(tg[0]) + "." + str(tg[1]) + "." + str(tg[2])
+        tg = str(tg[0]) + "." + str(tg[1])
         if p.status_code == 200:
             # print(item)
             write_to_mysql1(item)
