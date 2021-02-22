@@ -8,10 +8,15 @@ requests.packages.urllib3.disable_warnings()
 
 
 def crawel_tmtpost(url, headers, proxy):
-    res = requests.get(url, headers=headers, verify=False,
-                       timeout=15, proxies=proxy)
+    try:
+        res = requests.get(url, headers=headers, verify=False,
+                           timeout=15, proxies=proxy)
+        return res.text
+    except Exception as e:
+        print(e)
+        return None
     # print(res.text)
-    return res.text
+
 
 
 def parse_news(html):
@@ -21,15 +26,20 @@ def parse_news(html):
     #     href_xpath = f'//*[@id="list-v-1"]/ul/li/p[{i}]/a/@href'
     #     title = tree.xpath(title_xpath)
     #     href = tree.xpath(href_xpath)
-    href_xpath = '//*[@data-time="今天"]/a/@href'
+    # href_xpath = '//li[@data-time="昨天"]/a/@href'
+    # href_xpath = '//a[@target="_blank"]/@href'
+    href_xpath = '//ul[@class="word_list"]/li/a/@href'
     href_list = tree.xpath(href_xpath)
     print(href_list)
     return href_list
 
 
 def crawel_tmtpost_content(href, headers, proxy):
-    res = requests.get(href, headers=headers, verify=False,
-                       timeout=15, proxies=proxy)
+    try:
+        res = requests.get(href, headers=headers, verify=False,
+                           timeout=15, proxies=proxy)
+    except Exception as e:
+        print(e)
     # print(res.text)
     return res.text
 
@@ -54,17 +64,18 @@ def write_to_txt(news):
 def main(url, headers, proxy):
     content_list = []
     html = crawel_tmtpost(url, headers, proxy)
-    href_list1 = parse_news(html)
-    for href in href_list1:
-        if href.startswith('/nictation'):
-            href = "http://www.tmtpost.com" + str(href)
-            print(href)
-            html_content = crawel_tmtpost_content(href, headers, proxy)
-            # print(html_content)
-            content_dict = parse_content(html_content)
-            write_to_txt(content_dict)
-            content_list.append(content_dict)
-            print(content_list)
+    if html is not None:
+        href_list1 = parse_news(html)
+        for href in href_list1:
+            if href.startswith('/nictation'):
+                href = "http://www.tmtpost.com" + str(href)
+                print(href)
+                html_content = crawel_tmtpost_content(href, headers, proxy)
+                # print(html_content)
+                content_dict = parse_content(html_content)
+                write_to_txt(content_dict)
+                content_list.append(content_dict)
+                print(content_list)
 
 
 if __name__ == '__main__':
@@ -77,6 +88,9 @@ if __name__ == '__main__':
     # proxy = {"http": "http://47.75.90.57:80"}
     # proxy = {"http": "http://191.101.39.27:80"}
     proxy = {"http": "http://191.101.39.154:80"}
+    # proxy = {"http": "http://139.99.105.185:80"}
+    # proxy = {"http": "http://52.19.94.82:33128"}
+    # proxy = {"http": "http://124.41.240.203:55948"}
     proxy_list = [{'http': 'http://39.100.18.200:8080'}, {'http': 'http://218.59.139.238:80'},
                   {'http': 'http://39.106.223.134:80'}, {'http': 'http://78.47.16.54:80'},
                   {'http': 'http://5.196.23.219:80'},
