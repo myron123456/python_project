@@ -66,7 +66,7 @@ def verify(content):
         else:
             url = url2
         p = requests.get(url=url, headers=headers, proxies=content, timeout=15)
-        print(p.text)
+        # print(p.text)
         # time.sleep(2.3)
         # print(content)
         item = list(content.items())[0]
