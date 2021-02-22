@@ -47,6 +47,9 @@ def parse_content(html_content):
     content_dict = {f'{title}': f'{content}'}
     return content_dict
 
+def write_to_txt(news):
+    with open("tmtpost_news.txt",'a', encoding='utf-8') as f:
+        f.write(str(news) + "\n")
 
 def main(url, headers, proxy):
     content_list = []
@@ -59,6 +62,7 @@ def main(url, headers, proxy):
             html_content = crawel_tmtpost_content(href, headers, proxy)
             # print(html_content)
             content_dict = parse_content(html_content)
+            write_to_txt(content_dict)
             content_list.append(content_dict)
             print(content_list)
 
