@@ -9,7 +9,7 @@ requests.packages.urllib3.disable_warnings()
 
 def crawel_zgcnews(url, headers, proxy):
     res = requests.get(url, headers=headers, verify=False,
-                       timeout=15, proxies=proxy)
+                       timeout=15)
     # print(res.text)
     return res.text
 
@@ -29,7 +29,7 @@ def parse_news(html):
 
 def crawel_zgcnews_content(href, headers, proxy):
     res = requests.get(href, headers=headers, verify=False,
-                       timeout=15, proxies=proxy)
+                       timeout=15)
     # print(res.text)
     return res.text
 
@@ -40,8 +40,12 @@ def parse_content(html_content):
     title_xpath = "//*[@class=\"article-header clearfix\"]/h1/text()"
     content_xpath = '//*[@id="article-content"]/div/p/text()'
     title = tree.xpath(title_xpath)
-    print(title)
+    # print(title)
     content = tree.xpath(content_xpath)
+    print(content)
+    content = content[:-2]
+    content = "".join(content).replace("\xa0 \xa0\xa0\xa0", "。")
+    print(content)
     content_dict = {f'{title}': f'{content}'}
     return content_dict
 
