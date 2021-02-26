@@ -69,7 +69,7 @@ def main():
     url = "https://www.ithome.com/block/rank.html"
     html = crawel_ribang(url)
     # print(html)
-    href_list = parse_news(html)
+    href_list = parse_news(html)[2:]
     for href in href_list:
         result_list = crawel_ribang_content(href)
         print(result_list)

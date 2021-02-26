@@ -38,10 +38,11 @@ def crawel_tmtpost_content(href, headers, proxy):
     try:
         res = requests.get(href, headers=headers, verify=False,
                            timeout=15, proxies=proxy)
+        return res.text
     except Exception as e:
         print(e)
     # print(res.text)
-    return res.text
+        return None
 
 
 def parse_content(html_content):
@@ -72,10 +73,11 @@ def main(url, headers, proxy):
                 print(href)
                 html_content = crawel_tmtpost_content(href, headers, proxy)
                 # print(html_content)
-                content_dict = parse_content(html_content)
-                write_to_txt(content_dict)
-                content_list.append(content_dict)
-                print(content_list)
+                if html_content is not None:
+                    content_dict = parse_content(html_content)
+                    write_to_txt(content_dict)
+                    content_list.append(content_dict)
+                    print(content_list)
 
 
 if __name__ == '__main__':
@@ -87,8 +89,8 @@ if __name__ == '__main__':
     }
     # proxy = {"http": "http://47.75.90.57:80"}
     # proxy = {"http": "http://191.101.39.27:80"}
-    proxy = {"http": "http://191.101.39.154:80"}
-    # proxy = {"http": "http://139.99.105.185:80"}
+    # proxy = {"http": "http://191.101.39.154:80"}
+    proxy = {"http": "http://139.99.105.185:80"}
     # proxy = {"http": "http://52.19.94.82:33128"}
     # proxy = {"http": "http://124.41.240.203:55948"}
     proxy_list = [{'http': 'http://39.100.18.200:8080'}, {'http': 'http://218.59.139.238:80'},
