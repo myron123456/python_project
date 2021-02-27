@@ -40,9 +40,9 @@ def parse_one_page(html):
     items = re.findall(pattern, html)
     for item in items:
         item = list(item)
-        if item[2] == "HTTP,HTTPS" or item[2] == "HTTPS":
+        if item[2] == "HTTPS":
             item[2] = "https"
-        elif item[2] == "HTTP":
+        elif item[2] == "HTTP" or item[2] == "HTTP,HTTPS" :
             item[2]="http"
         yield {
             # 'type': item[2],

@@ -42,9 +42,9 @@ def parse_one_page(html):
     items = re.findall(pattern, html)
     for item in items:
         item = list(item)
-        if item[1] == "HTTP代理":
+        if item[1] == "HTTP代理" or item[1] == "HTTP,HTTPS代理":
             item[1] = "http"
-        elif item[1] == "HTTPS代理" or item[1] == "HTTP,HTTPS代理":
+        elif item[1] == "HTTPS代理":
             item[1] = "https"
         yield {
             # 'type': item[1],
@@ -126,7 +126,7 @@ def write_to_mysql2(target):
 
 def main():
     # xila free proxy IP,页面1的url特殊
-    for i in range(1, 11):
+    for i in range(1, 101):
         try:
             if i == 1:
                 url = "http://www.xiladaili.com/gaoni/"

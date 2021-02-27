@@ -1,4 +1,7 @@
 # coding=utf-8
+import json
+
+import pymysql
 import requests
 from fake_useragent import UserAgent
 from lxml import etree
@@ -50,9 +53,9 @@ def parse_content(html_content):
     # content_xpath = '/html/body/div[7]/section/div[1]/div[1]/pre/text()'
     title_xpath = "//h2[@class=\"title\"]/text()"
     content_xpath = "//div[@class=\"main\"]/pre/text()"
-    title = tree.xpath(title_xpath)
-    print(title)
-    content = tree.xpath(content_xpath)
+    title = tree.xpath(title_xpath)[0]
+    # print(title)
+    content = tree.xpath(content_xpath)[0]
     content = str(content).replace("\n", "")
     content_dict = {f'{title}': f'{content}'}
     return content_dict
@@ -62,6 +65,19 @@ def write_to_txt(news):
     with open("tmtpost_news.txt", 'a', encoding='utf-8') as f:
         f.write(str(news) + "\n")
 
+def write_to_mysql(title,content):
+    db = pymysql.connect(
+        host='localhost',
+        port=3306,
+        user='root',
+        password='myron123',
+        database='news_data'
+    )
+    cursor = db.cursor()
+    sql = 'insert into news_hub(refer,title,content) values("{}","{}","{}")'.format("来源：钛媒体",title,content)
+    cursor.execute(sql)
+    print('插入成功')
+    db.commit()
 
 def main(url, headers, proxy):
     content_list = []
@@ -76,11 +92,14 @@ def main(url, headers, proxy):
                 # print(html_content)
                 if html_content is not None:
                     content_dict = parse_content(html_content)
-                    content_dict = str(content_dict).replace("\\n", "")
-                    content_dict = str(content_dict).replace("\\", "")
                     write_to_txt(content_dict)
+                    for i in content_dict:
+                        title = i.replace("\\n", "").replace("\\", "")
+                        content = content_dict[f'{title}'].replace("\\n", "").replace("\\", "")
+                        write_to_mysql(title, content)
                     content_list.append(content_dict)
-                    print(content_list)
+
+                print(content_list)
 
 
 if __name__ == '__main__':

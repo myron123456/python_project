@@ -87,55 +87,7 @@ def re_parse_one_page(html):
             # 'target': str(item[0])+":"+str(item[1])
             "{}".format(item[2]): "{}".format(str(item[2])+"://"+str(item[0]) + ":" + str(item[1]))
         }
-
-
-def verify(content):
-    try:
-        headers = {
-            "User-Agent": "Mozilla/5.0(Macintosh; Intel Mac OS X 13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36",
-        }
-        url1 = 'http://icanhazip.com'
-        url2 = "http://httpbin.org/get"
-        url3 = "https://httpbin.org/get"
-        if "https" in str(content):
-            url = url3
-        else:
-            url = url2
-        p = requests.get(url, headers=headers, proxies=content, verify=False, allow_redirects=False, timeout=15)
-        # print(p.text)
-        # time.sleep(2.5)
-        result = json.loads(p.text)['origin']
-        item = list(content.items())[0]
-        item = {'{}'.format(item[0]): '{}'.format(item[1])}
-        print(item)
-        tg = list(item.values())[0].split(':')[1][2:].split('.')
-        # tg = str(tg[0]) + "." + str(tg[1]) + "." + str(tg[2])
-        tg = str(tg[0]) + "." + str(tg[1])
-        if p.status_code == 200:
-            # print(item)
-            write_to_mysql1(item)
-            # if tg in p.text.strip():
-            if tg in result.strip():
-                print("gn ok")
-                write_to_mysql2(item)
-    except  Exception as e:
-        print(e)
-
-
-def write_to_txt(item):
-    with open('kdl.txt', 'a', encoding='utf-8') as f:
-        f.write(json.dumps(item, ensure_ascii=False) + '\n')
-
-
 def write_to_mysql1(target):
-    # # 数据库名称和密码
-    # user = 'root'
-    # passwd = 'myron123'  # 替换为自己的用户名和密码
-    # # 建立本地数据库连接(需要先开启数据库服务)
-    # host="localhost"
-    # port = 3306
-    # db = "crawel"
-    # db = pymysql.connect(user,passwd,host,port,db)
     db = pymysql.connect(
         host='localhost',
         port=3306,
@@ -151,14 +103,6 @@ def write_to_mysql1(target):
 
 
 def write_to_mysql2(target):
-    # # 数据库名称和密码
-    # name = 'root'
-    # password = 'myron123'  # 替换为自己的用户名和密码
-    # # 建立本地数据库连接(需要先开启数据库服务)
-    # host = "localhost"
-    # db = "crawel"
-    # port = 3306
-    # db = pymysql.connect(host,port,name,  password, db, charset='utf8')
     db = pymysql.connect(
         host='localhost',
         port=3306,
@@ -169,8 +113,45 @@ def write_to_mysql2(target):
     cursor = db.cursor()
     sql = 'insert into ndl(target) values("{}")'.format(target)
     cursor.execute(sql)
-    print('插入高匿成功')
+    print('插入成功')
     db.commit()
+
+def verify(content):
+    try:
+        headers = {
+            "User-Agent": "Mozilla/5.0(Macintosh; Intel Mac OS X 13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36",
+        }
+        url1 = 'http://icanhazip.com'
+        url2 = "http://httpbin.org/get"
+        url3 = "https://httpbin.org/get"
+        if "https" in str(content):
+            url = url3
+        else:
+            url = url2
+        p = requests.get(url, headers=headers, proxies=content, verify=False, allow_redirects=False, timeout=5)
+        # print(p.text)
+        # time.sleep(2.5)
+        result = json.loads(p.text)['origin']
+        item = list(content.items())[0]
+        item = {'{}'.format(item[0]): '{}'.format(item[1])}
+        # print(item)
+        tg = list(item.values())[0].split(':')[1][2:].split('.')
+        # tg = str(tg[0]) + "." + str(tg[1]) + "." + str(tg[2])
+        tg = str(tg[0]) + "." + str(tg[1])
+        if p.status_code == 200:
+            print(item)
+            write_to_mysql1(item)
+            # if tg in p.text.strip():
+            if tg in result.strip():
+                print("gn ok")
+                write_to_mysql2(item)
+    except  Exception as e:
+        print(e)
+
+
+def write_to_txt(item):
+    with open('kdl.txt', 'a', encoding='utf-8') as f:
+        f.write(json.dumps(item, ensure_ascii=False) + '\n')
 
 
 def main():
@@ -184,7 +165,7 @@ def main():
                 for item in re_parse_one_page(html):
                     # target = verify(item)
                     # write_to_mysql(target)
-                    print(item)
+                    # print(item)
                     verify(item)
             except Exception as e:
                 print(e)

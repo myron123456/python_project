@@ -14,8 +14,8 @@ proxy = {'http': 'http://148.251.153.6:1080'}
 res = requests.get(url=url, headers=headers, verify=False,
                    allow_redirects=False, proxies=proxy, timeout=15)
 result = json.loads(res.text)
-
-content = result['data']['briefing_list'][0]['content']
-title = result['data']['briefing_list'][0]['title']
-print(content)
-print(title)
+for i  in range(1,11):
+    content = result['data']['briefing_list'][i]['content']
+    title = result['data']['briefing_list'][i]['title']
+    print(content)
+    print(title)
