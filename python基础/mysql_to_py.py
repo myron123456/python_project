@@ -33,7 +33,7 @@ def read_proxys():
         database="crawel",
     )
     cursor = db.cursor()
-    sql = "select distinct target from proxy;"
+    sql = "select distinct target from xila_ndl;"
     cursor.execute(sql)
     proxys = cursor.fetchall()
     db.commit()
@@ -62,7 +62,7 @@ def write_to_mysql(target):
         database='crawel'
     )
     cursor = db.cursor()
-    sql = 'insert into proxies(target) values("{}")'.format(target)
+    sql = 'insert into proxy(target) values("{}")'.format(target)
     cursor.execute(sql)
     print('插入成功')
     db.commit()
@@ -88,10 +88,10 @@ def proxy_list_plus():
             global p
             p = requests.get(url=url, headers=headers, proxies=proxy, verify=False, allow_redirects=False, timeout=10)
             # print(p.text)
-            item = list(proxy.items())[0]
-            item = {'{}'.format(item[0]): '{}'.format(item[1])}
-            result = json.loads(p.text)['origin']
             if p.status_code == 200 or "Backend not available" in p.text or "" in p.text or "html" in p.text:
+                item = list(proxy.items())[0]
+                item = {'{}'.format(item[0]): '{}'.format(item[1])}
+                result = json.loads(p.text)['origin']
                 tg = list(proxy.values())[0].split(':')[1][2:].split('.')
                 tg = str(tg[0]) + "." + str(tg[1]) + "." + str(tg[2])
                 if tg in result.strip():

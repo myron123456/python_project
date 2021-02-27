@@ -66,16 +66,16 @@ def verify(content):
         # print(p.text)
         # time.sleep(2.3)
         # print(content)
-        item = list(content.items())[0]
-        item = {'{}'.format(item[0]): '{}'.format(item[1])}
-        print(item)
-        tg = list(item.values())[0].split(':')[1][2:].split('.')
-        # tg = str(tg[0]) + "." + str(tg[1]) + "." + str(tg[2])
-        tg = str(tg[0]) + "." + str(tg[1])
         if p.status_code == 200:
+            item = list(content.items())[0]
+            item = {'{}'.format(item[0]): '{}'.format(item[1])}
+            print(item)
+            tg = list(item.values())[0].split(':')[1][2:].split('.')
+            # tg = str(tg[0]) + "." + str(tg[1]) + "." + str(tg[2])
+            tg = str(tg[0]) + "." + str(tg[1])
             # print(item)
             write_to_mysql1(item)
-            if tg in p.text.strip():
+            if tg in p.text.strip() or "Backend not available" in p.text or "<html>" in p.text or "" in p.text:
                 print("gn ok")
                 write_to_mysql2(item)
     except  Exception as e:
