@@ -31,7 +31,7 @@ def crawel_one_page(url):
     }
     # proxy = {"HTTP": "52.149.152.236:80"}
     res = requests.get(url, headers=headers, verify=False,
-                       allow_redirects=False, timeout=15)
+                       allow_redirects=False, timeout=30)
     if res.status_code == 200:
         return res.text
     return None
@@ -129,7 +129,7 @@ def write_to_mysql2(target):
 
 def main():
     # xila free proxy IP,页面1的url特殊
-    for i in range(1, 101):
+    for i in range(1, 11):
         try:
             if i == 1:
                 url = "http://www.xiladaili.com/gaoni/"
