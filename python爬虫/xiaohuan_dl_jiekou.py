@@ -68,11 +68,11 @@ with open("xiaohuan_dl_https.txt", 'r') as f:
             url = "http://icanhazip.com"
             headers = {"User-Agent": 'Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1',
                        }
-            # proxy = {'http': 'http://{}'.format(ip)}
-            proxy = {'https': 'https://{}'.format(ip)}
+            proxy = {'http': 'http://{}'.format(ip)}
+            # proxy = {'https': 'https://{}'.format(ip)}
             print(proxy)
             res = requests.get(url=url, headers=headers, verify=False,
-                               allow_redirects=False, timeout=15, proxies=proxy)
+                               allow_redirects=False, timeout=5, proxies=proxy)
             # time.sleep(3)
             print(res.text)
             item = list(proxy.items())[0]

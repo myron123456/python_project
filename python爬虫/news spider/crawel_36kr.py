@@ -22,12 +22,21 @@ def crawel_kuaixun1(url):
 
 def parse_news(html):
     tree = etree.HTML(html)
-    for i in range(1,11):
-        title_path = "//*[@id=\"app\"]/div/div[1]/div[3]/div[2]/div/div[1]/div[2]/div/div[1]/div["+str(i)+"]/div[2]/div/a/text()"
-        content_path = "//*[@id=\"app\"]/div/div[1]/div[3]/div[2]/div/div[1]/div[2]/div/div[1]/div["+str(i)+"]/div[2]/div/div[2]/span/text()"
-        news_title = tree.xpath(title_path)[0]
-        news_content = tree.xpath(content_path)[0]
-        news_dict = {f"{news_title}":f"{news_content}"}
+    for i in range(1, 11):
+        # title_path = "//*[@id=\"app\"]/div/div[1]/div[3]/div[2]/div/div[1]/div[2]/div/div[1]/div[" + str(
+        #     i) + "]/div[2]/div/a/text()"
+        # content_path = "//*[@id=\"app\"]/div/div[1]/div[3]/div[2]/div/div[1]/div[2]/div/div[1]/div[" + str(
+        #     i) + "]/div[2]/div/div[2]/span/text()"
+        title_path = "//a[@class=\"item-title\"]/text()"
+        content_path = "//div[@class=\"item-desc\"]/span/text()"
+
+        news_title = tree.xpath(title_path)[i]
+        # print(news_title)
+        # news_title = str(news_title).replace('“', '\"').replace('”', '\"')
+        news_content = tree.xpath(content_path)[i]
+        # print(news_content)
+        # news_content = str(news_content).replace('“', '\"').replace('”', '\"')
+        news_dict = {f"{news_title}": f"{news_content}"}
         global result_list
         result_list.append(news_dict)
         # print(news_titles)
@@ -36,8 +45,8 @@ def parse_news(html):
         #     result_list.append(news_title)
         # return result_list
     pattern = '\"pageCallback\":\"(.*?)\"'
-    pageCallback = re.findall(pattern,html)
-    return result_list,pageCallback
+    pageCallback = re.findall(pattern, html)
+    return result_list, pageCallback
 
 def crawel_kuaixun2(url,post_data):
     user_agent = UserAgent()

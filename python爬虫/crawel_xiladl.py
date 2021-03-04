@@ -135,7 +135,7 @@ def main():
                 url = "http://www.xiladaili.com/gaoni/"
             else:
                 url = "http://www.xiladaili.com/gaoni/{}/".format(str(i))
-            # time.sleep(3.6)
+            time.sleep(3.6)
             html = crawel_one_page(url)
             if html is not None:
                 for content in parse_one_page(html):
