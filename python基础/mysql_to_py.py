@@ -33,7 +33,8 @@ def read_proxys():
         database="crawel",
     )
     cursor = db.cursor()
-    sql = "select distinct target from xila_ndl;"
+    # sql = "select distinct target from xila_ndl;"
+    sql = "select distinct target from proxy;"
     cursor.execute(sql)
     proxys = cursor.fetchall()
     db.commit()
@@ -62,7 +63,8 @@ def write_to_mysql(target):
         database='crawel'
     )
     cursor = db.cursor()
-    sql = 'insert into proxy(target) values("{}")'.format(target)
+    # sql = 'insert into proxy(target) values("{}")'.format(target)
+    sql = 'insert into proxies(target) values("{}")'.format(target)
     cursor.execute(sql)
     print('插入成功')
     db.commit()
@@ -76,6 +78,7 @@ def proxy_list_plus():
             proxy = eval(proxy)
             headers = {
                 "User-Agent": "Mozilla/5.0(Macintosh; Intel Mac OS X 13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36",
+
             }
             url1 = 'http://icanhazip.com'
             url2 = "http://httpbin.org/get"

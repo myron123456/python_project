@@ -4,7 +4,7 @@ import time
 import pymysql
 import requests
 import threading
-
+import random
 requests.packages.urllib3.disable_warnings()
 
 
@@ -30,8 +30,31 @@ def crawel_one_page(url):
 
     }
     # proxy = {"HTTP": "52.149.152.236:80"}
+    proxy_list = [{'http': 'http://112.245.17.202:8080'}, {'http': 'http://5.196.23.219:80'},
+                  {'http': 'http://51.158.186.242:8811'}, {'http': 'http://39.106.223.134:80'},
+                  {'http': 'http://220.174.236.211:8091'}, {'http': 'http://34.203.142.175:80'},
+                  {'http': 'http://192.109.165.129:80'}, {'http': 'http://191.101.39.81:80'},
+                  {'http': 'http://88.99.10.254:1080'}, {'http': 'http://88.99.10.251:1080'},
+                  {'http': 'http://220.174.236.211:8091'}, {'http': 'http://218.59.139.238:80'},
+                  {'http': 'http://39.106.223.134:80'}, {'http': 'http://47.106.162.218:80'},
+                  {'http': 'http://78.47.16.54:80'}, {'http': 'http://5.196.23.219:80'},
+                  {'http': 'http://88.99.10.251:1080'}, {'http': 'http://51.158.107.202:9999'},
+                  {'http': 'http://88.99.10.254:1080'}, {'http': 'http://191.101.39.81:80'},
+                  {'http': 'http://191.101.39.238:80'}, {'http': 'http://148.251.153.6:1080'},
+                  {'http': 'http://186.226.174.193:8080'}, {'http': 'http://78.47.16.54:80'},
+                  {'http': 'http://39.100.18.200:8080'}, {'http': 'http://198.50.163.192:3129'},
+                  {'http': 'http://195.53.49.11:3128'}, {'http': 'http://148.251.153.6:1080'},
+                  {'http': 'http://51.75.147.44:3128'}, {'http': 'http://178.128.83.219:8899'},
+                  {'http': 'http://191.101.39.238:80'}, {'http': 'http://142.4.203.248:3128'},
+                  {'http': 'http://46.35.249.189:41419'}, {'http': 'http://221.141.130.183:33741'},
+                  {'http': 'http://185.38.111.1:8080'}]
+    # proxy_list = [{'http': 'http://47.106.162.218:80'}, {'http': 'http://218.59.139.238:80'}, {'http': 'http://5.196.23.219:80'}, {'http': 'http://51.158.186.242:8811'}, {'http': 'http://39.106.223.134:80'}, {'http': 'http://36.94.37.66:8080'}, {'http': 'http://191.101.39.27:80'}, {'http': 'http://220.174.236.211:8091'}, {'http': 'http://47.75.90.57:80'}, {'http': 'http://74.143.245.221:80'}, {'http': 'http://34.203.142.175:80'}, {'http': 'http://191.101.39.154:80'}, {'http': 'http://192.109.165.129:80'}, {'http': 'http://191.101.39.81:80'}, {'http': 'http://88.99.10.254:1080'}, {'http': 'http://186.226.174.193:8080'}, {'http': 'http://218.59.139.238:80'}, {'http': 'http://39.106.223.134:80'}, {'http': 'http://47.106.162.218:80'}, {'http': 'http://52.74.18.115:80'}, {'http': 'http://78.47.16.54:80'}, {'http': 'http://5.196.23.219:80'}, {'http': 'http://5.39.17.96:80'}, {'http': 'http://88.99.10.251:1080'}, {'http': 'http://51.158.107.202:9999'}, {'http': 'http://88.99.10.254:1080'}, {'http': 'http://186.226.174.193:80'}, {'http': 'http://191.101.39.81:80'}, {'http': 'http://191.101.39.238:80'}, {'http': 'http://148.251.153.6:1080'}, {'http': 'http://46.30.188.187:80'}, {'http': 'http://180.94.69.66:8080'}, {'http': 'http://186.226.174.193:8080'}, {'http': 'http://163.172.47.182:8080'}, {'http': 'http://78.47.16.54:80'}, {'http': 'http://103.28.121.58:80'}]
+    # proxy_list = [{'http': 'http://43.248.24.157:51166'}, {'http': 'http://218.59.139.238:80'}, {'http': 'http://5.196.23.219:80'}, {'http': 'http://51.158.186.242:8811'}, {'http': 'http://39.106.223.134:80'}, {'http': 'http://191.101.39.27:80'}, {'http': 'http://122.226.57.70:8888'}, {'http': 'http://220.174.236.211:8091'}, {'http': 'http://47.75.90.57:80'}, {'http': 'http://74.143.245.221:80'}, {'http': 'http://34.203.142.175:80'}, {'http': 'http://191.101.39.154:80'}, {'http': 'http://106.14.198.6:8080'}, {'http': 'http://192.109.165.129:80'}, {'http': 'http://191.101.39.81:80'}, {'http': 'http://88.99.10.254:1080'}, {'http': 'http://88.99.10.251:1080'}, {'http': 'http://220.174.236.211:8091'}, {'http': 'http://218.59.139.238:80'}, {'http': 'http://39.106.223.134:80'}, {'http': 'http://47.106.162.218:80'}, {'http': 'http://78.47.16.54:80'}, {'http': 'http://115.75.1.184:8118'}, {'http': 'http://88.99.10.251:1080'}, {'http': 'http://88.99.10.254:1080'}, {'http': 'http://186.226.174.193:80'}, {'http': 'http://191.101.39.81:80'}, {'http': 'http://191.101.39.238:80'}, {'http': 'http://148.251.153.6:1080'}, {'http': 'http://180.94.69.66:8080'}, {'http': 'http://118.24.89.206:1080'}, {'http': 'http://39.100.18.200:8080'}, {'http': 'http://106.14.198.6:8080'}, {'http': 'http://78.47.16.54:80'}, {'http': 'http://5.39.17.96:80'}, {'http': 'http://51.158.172.165:8811'}, {'http': 'http://51.158.107.202:9999'}, {'http': 'http://191.101.39.238:80'}, {'http': 'http://148.251.153.6:1080'}, {'http': 'http://118.24.88.66:1080'}, {'http': 'http://118.24.172.149:1080'}]
+    # proxy = {'http': 'http://27.158.30.240:26156'}
+    # proxy = {'http': 'http://123.52.179.233:40240'}
+    proxy = proxy_list[random.randint(0, len(proxy_list) - 1)]
     res = requests.get(url, headers=headers, verify=False,
-                       allow_redirects=False, timeout=30)
+                       allow_redirects=False, timeout=15)
     if res.status_code == 200:
         return res.text
     return None
@@ -126,24 +149,40 @@ def write_to_mysql2(target):
     print('插入成功')
     db.commit()
 
+def digui_ceshi(html,url,i):
+    # print("进度:" + str(i / (i * 50) * 10) + "%")
+    print(url)
+    if html is not None:
+        for content in parse_one_page(html):
+            # print(content)
+            # write_to_txt(content)
+            verify(content)
+    else:
+        # print("随机代理超时")
+        digui_ceshi(html,url,i)
 
 def main():
     # xila free proxy IP,页面1的url特殊
-    for i in range(1, 11):
+    for i in range(1, 101):
         try:
             if i == 1:
                 url = "http://www.xiladaili.com/gaoni/"
             else:
                 url = "http://www.xiladaili.com/gaoni/{}/".format(str(i))
-            time.sleep(3.6)
+            # time.sleep(random.randrange(3,5))
             html = crawel_one_page(url)
-            if html is not None:
-                for content in parse_one_page(html):
-                    # print(content)
-                    # write_to_txt(content)
-                    verify(content)
-            else:
-                print("访问目标网站失败")
+            digui_ceshi(html,url,i)
+
+            # if html is not None:
+            #     for content in parse_one_page(html):
+            #         # print(content)
+            #         # write_to_txt(content)
+            #         verify(content)
+            # else:
+            #     print("访问目标网站失败")
+            #     html = crawel_one_page(url)
+            #     html = digui_ceshi(html)
+                # i=i-1
         except Exception as e:
             print(e)
 
