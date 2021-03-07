@@ -169,7 +169,7 @@ def main():
                 url = "http://www.xiladaili.com/gaoni/"
             else:
                 url = "http://www.xiladaili.com/gaoni/{}/".format(str(i))
-            # time.sleep(random.randrange(3,5))
+            time.sleep(random.randrange(3,5))
             html = crawel_one_page(url)
             digui_ceshi(html,url,i)
 
