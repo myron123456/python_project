@@ -31,5 +31,5 @@ for i in range(1,maxpage+1):
         print("\t\t"+str(i),end="")
         result_list.append(result)
         print("\t\t识别率:"+str((i-len(result_list))/i*100)[:5]+"%",end="")
-        print("\t\t进度:" + str((i / (maxpage + 1)) * 100)[:5] + "%", end="")
+        print("\t\t进度:" + str((i /(maxpage + 1) * 100))[:5] + "%", end="")
 print(result)
