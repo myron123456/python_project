@@ -1,0 +1,101 @@
+{'title': '霸王别姬 - Farewell My Concubine', 'score': '9.5', 'type': '剧情;爱情'}
+{'title': '这个杀手不太冷 - Léon', 'score': '9.5', 'type': '剧情;动作;犯罪'}
+{'title': '肖申克的救赎 - The Shawshank Redemption', 'score': '9.5', 'type': '剧情;犯罪'}
+{'title': '泰坦尼克号 - Titanic', 'score': '9.5', 'type': '剧情;爱情;灾难'}
+{'title': '罗马假日 - Roman Holiday', 'score': '9.5', 'type': '剧情;喜剧;爱情'}
+{'title': '唐伯虎点秋香 - Flirting Scholar', 'score': '9.5', 'type': '喜剧;爱情;古装'}
+{'title': '乱世佳人 - Gone with the Wind', 'score': '9.5', 'type': '剧情;爱情;历史;战争'}
+{'title': '喜剧之王 - The King of Comedy', 'score': '9.5', 'type': '剧情;喜剧;爱情'}
+{'title': '楚门的世界 - The Truman Show', 'score': '9.0', 'type': '剧情;科幻'}
+{'title': '狮子王 - The Lion King', 'score': '9.0', 'type': '动画;歌舞;冒险'}
+{'title': 'V字仇杀队 - V for Vendetta', 'score': '8.9', 'type': '剧情;动作;科幻;惊悚'}
+{'title': '少年派的奇幻漂流 - Life of Pi', 'score': '8.9', 'type': '剧情;奇幻;冒险'}
+{'title': '美丽心灵 - A Beautiful Mind', 'score': '8.8', 'type': '剧情;传记'}
+{'title': '初恋这件小事 - สิ่งเล็กเล็กที่เรียกว่า...รัก', 'score': '8.9', 'type': '喜剧;爱情'}
+{'title': '借东西的小人阿莉埃蒂 - 借りぐらしのアリエッティ', 'score': '8.8', 'type': '动画;奇幻;冒险'}
+{'title': '一一 - Yi yi: A One and a Two', 'score': '8.8', 'type': '剧情;爱情;家庭'}
+{'title': '美丽人生 - La vita è bella', 'score': '9.1', 'type': '战争;剧情;爱情'}
+{'title': "海上钢琴师 - La leggenda del pianista sull'oceano", 'score': '9.1', 'type': '剧情;爱情;音乐'}
+{'title': '千与千寻 - 千と千尋の神隠し', 'score': '9.1', 'type': '动画;冒险;奇幻;家庭'}
+{'title': '迁徙的鸟 - The Travelling Birds', 'score': '9.1', 'type': '纪录片'}
+{'title': '黄金三镖客 - Il buono, il brutto, il cattivo.', 'score': '9.1', 'type': '西部;冒险'}
+{'title': '海洋 - Océans', 'score': '9.1', 'type': '纪录片'}
+{'title': '我爱你 - 그대를 사랑합니다', 'score': '9.1', 'type': '剧情;爱情'}
+{'title': '阿飞正传 - Days of Being Wild', 'score': '9.1', 'type': '剧情;爱情;犯罪'}
+{'title': '7号房的礼物 - 7번방의 선물', 'score': '8.8', 'type': '剧情;喜剧;家庭'}
+{'title': '爱·回家 - 집으로...', 'score': '9.1', 'type': '剧情;家庭'}
+{'title': '龙猫 - となりのトトロ', 'score': '9.1', 'type': '动画;冒险;奇幻;家庭'}
+{'title': '七武士 - 七人の侍', 'score': '8.8', 'type': '剧情;动作;冒险'}
+{'title': '美国往事 - Once Upon a Time in America', 'score': '8.8', 'type': '剧情;犯罪'}
+{'title': '完美的世界 - A Perfect World', 'score': '8.8', 'type': '剧情;犯罪'}
+{'title': '上帝之城 - Cidade de Deus', 'score': '8.8', 'type': '剧情;犯罪'}
+{'title': '辩护人 - 변호인', 'score': '8.8', 'type': '剧情'}
+{'title': '忠犬八公物语 - ハチ公物語', 'score': '8.8', 'type': '剧情'}
+{'title': '海豚湾 - The Cove', 'score': '8.8', 'type': '纪录片'}
+{'title': '英雄本色 - A Better Tomorrow', 'score': '8.8', 'type': '剧情;动作;犯罪'}
+{'title': '恐怖直播 - 더 테러 라이브', 'score': '8.8', 'type': '剧情;悬疑;犯罪'}
+{'title': '窃听风暴 - Das Leben der Anderen', 'score': '8.8', 'type': '剧情;悬疑'}
+{'title': '时空恋旅人 - About Time', 'score': '8.8', 'type': '喜剧;爱情;奇幻'}
+{'title': '穿条纹睡衣的男孩 - The Boy in the Striped Pajamas', 'score': '8.8', 'type': '剧情;战争'}
+{'title': '教父 - The Godfather', 'score': '8.8', 'type': '剧情;犯罪'}
+{'title': '萤火之森 - 蛍火の杜へ', 'score': '8.8', 'type': '剧情;爱情;动画;奇幻'}
+{'title': '素媛 - 소원', 'score': '8.8', 'type': '剧情'}
+{'title': '小鞋子 - بچههای آسمان', 'score': '8.8', 'type': '剧情;家庭'}
+{'title': '熔炉 - 도가니', 'score': '8.8', 'type': '剧情'}
+{'title': '大话西游之大圣娶亲 - A Chinese Odyssey Part Two - Cinderella', 'score': '8.9', 'type': '喜剧;爱情;奇幻'}
+{'title': '新龙门客栈 - New Dragon Gate Inn', 'score': '8.9', 'type': '动作;爱情;武侠;古装'}
+{'title': '触不可及 - Intouchables', 'score': '8.9', 'type': '剧情;喜剧'}
+{'title': '钢琴家 - The Pianist', 'score': '8.9', 'type': '剧情;音乐;传记;历史;战争'}
+{'title': '本杰明·巴顿奇事 - The Curious Case of Benjamin Button', 'score': '8.9', 'type': '剧情;爱情;奇幻'}
+{'title': '倩女幽魂 - A Chinese Ghost Story', 'score': '8.9', 'type': '爱情;奇幻;武侠;古装'}
+{'title': '哈利·波特与死亡圣器（下） - Harry Potter and the Deathly Hallows: Part 2', 'score': '8.9', 'type': '剧情;悬疑;奇幻;冒险'}
+{'title': '甜蜜蜜 - Comrades: Almost a Love Story', 'score': '8.9', 'type': '剧情;爱情'}
+{'title': '蝙蝠侠：黑暗骑士崛起 - The Dark Knight Rises', 'score': '8.9', 'type': '剧情;动作;科幻;惊悚;犯罪'}
+{'title': '鬼子来了 - Devils on the Doorstep', 'score': '8.8', 'type': '剧情;战争'}
+{'title': '无敌破坏王 - Wreck-It Ralph', 'score': '8.8', 'type': '喜剧;动画;奇幻;冒险'}
+{'title': '致命魔术 - The Prestige', 'score': '8.8', 'type': '剧情;悬疑;惊悚'}
+{'title': '神偷奶爸 - Despicable Me', 'score': '8.8', 'type': '喜剧;动画;冒险'}
+{'title': '断背山 - Brokeback Mountain', 'score': '8.8', 'type': '剧情;爱情;家庭'}
+{'title': '怦然心动 - Flipped', 'score': '8.8', 'type': '剧情;喜剧;爱情'}
+{'title': '驯龙高手 - How to Train Your Dragon', 'score': '8.8', 'type': '喜剧;动画;奇幻;冒险'}
+{'title': '飞屋环游记 - Up', 'score': '8.8', 'type': '剧情;喜剧;动画;冒险'}
+{'title': '黑客帝国3：矩阵革命 - The Matrix Revolutions', 'score': '8.8', 'type': '动作;科幻'}
+{'title': '速度与激情5 - Fast Five', 'score': '8.9', 'type': '动作;犯罪'}
+{'title': '勇敢的心 - Braveheart', 'score': '8.9', 'type': '剧情;动作;传记;历史;战争'}
+{'title': '三傻大闹宝莱坞 - 3 Idiots', 'score': '8.9', 'type': '剧情;喜剧;爱情;歌舞'}
+{'title': '闻香识女人 - Scent of a Woman', 'score': '8.9', 'type': '剧情'}
+{'title': '末代皇帝 - The Last Emperor', 'score': '8.9', 'type': '剧情;传记;历史'}
+{'title': '风之谷 - 風の谷のナウシカ', 'score': '8.9', 'type': '动画;奇幻;冒险'}
+{'title': '大话西游之月光宝盒 - A Chinese Odyssey', 'score': '8.9', 'type': '喜剧;爱情;奇幻;古装'}
+{'title': '放牛班的春天 - Les choristes', 'score': '8.9', 'type': '剧情;音乐'}
+{'title': '当幸福来敲门 - The Pursuit of Happyness', 'score': '8.9', 'type': '剧情;家庭;传记'}
+{'title': '幽灵公主 - もののけ姫', 'score': '8.9', 'type': '动画;奇幻;冒险'}
+{'title': '十二怒汉 - 12 Angry Men', 'score': '8.9', 'type': '剧情'}
+{'title': '搏击俱乐部 - Fight Club', 'score': '8.9', 'type': '剧情;动作;悬疑;惊悚'}
+{'title': '疯狂原始人 - The Croods', 'score': '8.9', 'type': '喜剧;动画;冒险'}
+{'title': '阿凡达 - Avatar', 'score': '8.9', 'type': '动作;科幻;冒险'}
+{'title': '哈尔的移动城堡 - ハウルの動く城', 'score': '8.9', 'type': '动画;奇幻;冒险'}
+{'title': '盗梦空间 - Inception', 'score': '8.9', 'type': '剧情;科幻;悬疑;冒险'}
+{'title': "忠犬八公的故事 - Hachi: A Dog's Tale", 'score': '8.9', 'type': '剧情'}
+{'title': '拯救大兵瑞恩 - Saving Private Ryan', 'score': '8.9', 'type': '剧情;历史;战争'}
+{'title': '活着 - To Live', 'score': '9.0', 'type': '剧情;家庭;历史'}
+{'title': '机器人总动员 - WALL·E', 'score': '9.0', 'type': '喜剧;科幻;动画'}
+{'title': '天堂电影院 - Nuovo Cinema Paradiso', 'score': '9.0', 'type': '剧情;爱情'}
+{'title': '指环王2：双塔奇兵 - The Lord of the Rings: The Two Towers', 'score': '9.0', 'type': '剧情;动作;奇幻;冒险'}
+{'title': '指环王1：护戒使者 - The Lord of the Rings: The Fellowship of the Ring', 'score': '9.0', 'type': '剧情;动作;奇幻;冒险'}
+{'title': '射雕英雄传之东成西就 - The Eagle Shooting Heroes', 'score': '9.0', 'type': '喜剧;奇幻;武侠;古装'}
+{'title': '蝙蝠侠：黑暗骑士 - The Dark Knight', 'score': '9.0', 'type': '剧情;动作;科幻;惊悚;犯罪'}
+{'title': '无间道 - Infernal Affairs', 'score': '9.0', 'type': '剧情;悬疑;犯罪'}
+{'title': '教父2 - The Godfather: Part Ⅱ', 'score': '9.0', 'type': '剧情;犯罪'}
+{'title': '加勒比海盗 - Pirates of the Caribbean: The Curse of the Black Pearl', 'score': '9.0', 'type': '动作;奇幻;冒险'}
+{'title': "哈利·波特与魔法石 - Harry Potter and the Sorcerer's Stone", 'score': '9.0', 'type': '奇幻;冒险'}
+{'title': '指环王3：王者无敌 - The Lord of the Rings: The Return of the King', 'score': '9.0', 'type': '剧情;动作;奇幻;冒险'}
+{'title': '黑客帝国 - The Matrix', 'score': '9.0', 'type': '动作;科幻'}
+{'title': '剪刀手爱德华 - Edward Scissorhands', 'score': '9.0', 'type': '剧情;爱情;奇幻'}
+{'title': '春光乍泄 - Happy Together', 'score': '9.0', 'type': '剧情;爱情'}
+{'title': '大闹天宫 - The Monkey King', 'score': '9.0', 'type': '动画;奇幻'}
+{'title': '天空之城 - 天空の城ラピュタ', 'score': '9.0', 'type': '动画;奇幻;冒险'}
+{'title': '音乐之声 - The Sound of Music', 'score': '9.0', 'type': '剧情;爱情;歌舞;传记'}
+{'title': "辛德勒的名单 - Schindler's List", 'score': '9.5', 'type': '剧情;历史;战争'}
+{'title': '魂断蓝桥 - Waterloo Bridge', 'score': '9.5', 'type': '剧情;爱情;战争'}
+

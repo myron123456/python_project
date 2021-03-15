@@ -34,7 +34,7 @@ def read_proxys():
     )
     cursor = db.cursor()
     # sql = "select distinct target from xila_ndl;"
-    sql = "select distinct target from proxy;"
+    sql = "select distinct target from proxies1;"
     cursor.execute(sql)
     proxys = cursor.fetchall()
     db.commit()
@@ -64,7 +64,7 @@ def write_to_mysql(target):
     )
     cursor = db.cursor()
     # sql = 'insert into proxy(target) values("{}")'.format(target)
-    sql = 'insert into proxies(target) values("{}")'.format(target)
+    sql = 'insert into proxies2(target) values("{}")'.format(target)
     cursor.execute(sql)
     print('插入成功')
     db.commit()

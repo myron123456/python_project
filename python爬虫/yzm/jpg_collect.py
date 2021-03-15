@@ -28,7 +28,7 @@ headers = {
      }
 url = "https://so.gushiwen.cn/RandCode.ashx"
 
-os.makedirs("jpg1",exist_ok=True)
+os.makedirs("jpg", exist_ok=True)
 maxpage = 18000
 print("开始下载图片...")
 
