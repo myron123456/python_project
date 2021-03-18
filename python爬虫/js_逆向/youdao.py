@@ -12,9 +12,3 @@ import chardet
 # print(res.text)
 # # print(chardet.universaldetector(res.text))
 # print(res.encoding)
-
-strs = "aadfjkl;"
-strs.encode("utf-8")
-print(type(strs))
-strs.encode("gbk")
-print(strs)
