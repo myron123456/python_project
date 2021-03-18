@@ -166,9 +166,9 @@ def main():
     for i in range(1, 101):
         try:
             if i == 1:
-                url = "http://www.xiladaili.com/http/"
+                url = "http://www.xiladaili.com/gaoni/"
             else:
-                url = "http://www.xiladaili.com/http/{}/".format(str(i))
+                url = "http://www.xiladaili.com/gaoni/{}/".format(str(i))
             time.sleep(random.randrange(3,5))
             html = crawel_one_page(url)
             digui_ceshi(html,url,i)
