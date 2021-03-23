@@ -1,7 +1,7 @@
 # -*- codeing=utf-8 -*-
-# @Time:2021/3/15 17:06
+# @Time:2021/3/19 17:41
 # @Author:
-# @File:5_spa1.py
+# @File:6_spa2.py
 # @Software:PyCharm
 import requests
 from fake_useragent import UserAgent
@@ -47,7 +47,10 @@ def save_txt(result):
 
 def main():
     for i in range(1, 11):
-        url = "https://spa1.scrape.center/api/movie/?limit=10&offset={}".format(i * 10)
+        times = int(time.time())
+
+        token = str(md5_url)+","+str(times)
+        url = "https://spa1.scrape.center/api/movie/?limit=10&offset={}&token={}".format((i * 10),token)
         # time.sleep(random.randint(6,8))
         # print(url)
         html = crawel(url)
