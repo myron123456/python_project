@@ -24,7 +24,12 @@ url = "http://httpbin.org/get"
 # proxy = {'http': 'http://27.158.30.240:26156'}
 # proxy = {'http': 'http://123.52.179.233:40240'}
 # proxy = proxy_list[random.randint(0,len(proxy_list)-1)]
-proxy = {'http': 'http://183.89.144.131:8080'}
+# proxy = {'http': 'http://183.89.144.131:8080'}
+# proxy = {'http': 'http://8.210.88.234:3128'}
+# proxy = {'http': 'http://112.245.17.202:8080'}
+proxy = {'http': 'http://88.205.225.203:3128'}
+proxy = {'http': 'http://191.96.16.221:3129'}
+proxy ={'http': 'http://167.172.180.46:34575'}
 # for i in range(1,6):
 #     res = requests.get(url=url, headers=headers, verify=False,
 #                        timeout=15, allow_redirects=False,proxies=proxy)

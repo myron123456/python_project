@@ -81,6 +81,7 @@ def verify(content):
         headers = {
             "User-Agent": "Mozilla/5.0(Macintosh; Intel Mac OS X 13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36"
             ,
+            "keep-alive":"close"
         }
         url1 = 'http://icanhazip.com'
         url2 = "http://httpbin.org/get"
@@ -104,7 +105,7 @@ def verify(content):
             tg = str(tg[0]) + "." + str(tg[1])
             write_to_mysql1(item)
             # if tg in p.text.strip():
-            if tg in result.strip() or "Backend not available" in p.text or "<html>" in p.text or "" in p.text:
+            if tg in result.strip() and "112.32.32.243" not in result.strip() or "Backend not available" in p.text or "<html>" in p.text or "" in p.text:
                 print("gn ok")
                 write_to_mysql2(item)
     # except "Expecting value: line 1 column 1 (char 0)":
@@ -166,9 +167,9 @@ def main():
     for i in range(1, 101):
         try:
             if i == 1:
-                url = "http://www.xiladaili.com/gaoni/"
+                url = "http://www.xiladaili.com/http/"
             else:
-                url = "http://www.xiladaili.com/gaoni/{}/".format(str(i))
+                url = "http://www.xiladaili.com/http/{}/".format(str(i))
             time.sleep(random.randrange(3,5))
             html = crawel_one_page(url)
             digui_ceshi(html,url,i)
