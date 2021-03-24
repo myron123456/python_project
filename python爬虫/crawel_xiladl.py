@@ -105,7 +105,7 @@ def verify(content):
             tg = str(tg[0]) + "." + str(tg[1])
             write_to_mysql1(item)
             # if tg in p.text.strip():
-            if tg in result.strip() and "112.32.32.243" not in result.strip() or "Backend not available" in p.text or "<html>" in p.text or "" in p.text:
+            if (tg in result.strip() and "112.32.32.243" not in result.strip()):
                 print("gn ok")
                 write_to_mysql2(item)
     # except "Expecting value: line 1 column 1 (char 0)":
